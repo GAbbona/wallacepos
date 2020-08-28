@@ -441,34 +441,36 @@
                 piedata.push({ label:(data[i].hasOwnProperty('name')?data[i].name:i), refs:data[i].refs,  data:data[i].balance});
             }
         }
-        $.plot(placeholder, piedata, {
-            series: {
-                pie: {
-                    show: true,
-                    tilt:0.8,
-                    highlight: {
-                        opacity: 0.25
-                    },
-                    stroke: {
-                        color: '#fff',
-                        width: 2
-                    },
-                    startAngle: 2
-                }
-            },
-            legend: {
-                show: true,
-                position: "ne",
-                labelBoxBorderColor: null,
-                margin:[-30,15]
-            }
-            ,
-            grid: {
-                hoverable: true,
-                clickable: true
-            }
-        });
-
+	    // gives error if no data available
+	if (piedata.length > 0) {
+		$.plot(placeholder, piedata, {
+		    series: {
+			pie: {
+			    show: true,
+			    tilt:0.8,
+			    highlight: {
+				opacity: 0.25
+			    },
+			    stroke: {
+				color: '#fff',
+				width: 2
+			    },
+			    startAngle: 2
+			}
+		    },
+		    legend: {
+			show: true,
+			position: "ne",
+			labelBoxBorderColor: null,
+			margin:[-30,15]
+		    }
+		    ,
+		    grid: {
+			hoverable: true,
+			clickable: true
+		    }
+		});
+	}
         var totals = data['Totals'];
         // Fill total fields
         $("#piesaletotal").text(WPOS.util.currencyFormat(totals.saletotal));
