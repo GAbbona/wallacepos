@@ -42,10 +42,10 @@ class WposSocketControl {
 			pclose(popen('START "WPOS" node '.$_SERVER['DOCUMENT_ROOT'].$_SERVER['APP_ROOT'].'api/server.js','r'));
 		} else {
             $args = $_SERVER['DOCUMENT_ROOT'].$_SERVER['APP_ROOT']."api/server.js > /dev/null &";
-			exec("nodejs ".$args, $output, $res);
+			exec("node ".$args, $output, $res);
             // try the alternative command if nodejs fails
             if ($res>0)
-                exec("node ".$args, $output, $res);
+		exec("nodejs ".$args, $output, $res);              
         }
         sleep(1); // Wait a bit to see if nodejs exits
 		if ($this->getServerStat()===false){
