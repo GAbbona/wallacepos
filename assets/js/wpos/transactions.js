@@ -441,6 +441,7 @@ function WPOSTransactions() {
 
         }
         // load into datatables
+        if(!jQuery.isEmptyObject(transtable))
         loadIntoTable(transtable);
     }
 
